@@ -27,5 +27,12 @@ export default function QueryProcessor(query: string): string {
     return Math.max(firstnum, secondnum, thirdnum).toString();
   }
 
+  if (query.toLowerCase().includes("multiplied")){
+    let txt =  query.toLowerCase()
+    let firstnum = parseInt(txt.substring(8, 10))
+    let secondnum = parseInt(txt.substring(25, 27))
+    return Math.max(firstnum * secondnum).toString();
+  }
+
   return "";
 }
