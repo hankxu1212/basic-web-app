@@ -1,38 +1,23 @@
-export default function QueryProcessor(query: string): string {
-  if (query.toLowerCase().includes("shakespeare")) {
-    return (
-      "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
-      "English poet, playwright, and actor, widely regarded as the greatest " +
-      "writer in the English language and the world's pre-eminent dramatist."
-    );
-  }
-  if (query.toLowerCase().includes("andrew id")){
-    return ("ninghuax");
-  }
-  if (query.toLowerCase() == "what is your name?"){
-    return ("HX");
-  }
-  if (query.toLowerCase().includes("plus")){
-    let txt =  query.toLowerCase()
-    let firstnum = parseInt(txt.substring(8, 10))
-    let secondnum = parseInt(txt.substring(16, 18))
-    return (firstnum + secondnum).toString();
-  }
+import { Configuration, OpenAIApi } from "openai"
+require('dotenv').config()
 
-  if (query.toLowerCase().includes("largest")){
-    let txt =  query.toLowerCase()
-    let firstnum = parseInt(txt.substring(47, 49))
-    let secondnum = parseInt(txt.substring(51, 53))
-    let thirdnum = parseInt(txt.substring(55, 57))
-    return Math.max(firstnum, secondnum, thirdnum).toString();
-  }
+const configuration = new Configuration({
+  apiKey: "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"
+});
+const openai = new OpenAIApi(configuration);
 
-  if (query.toLowerCase().includes("multiplied")){
-    let txt =  query.toLowerCase()
-    let firstnum = parseInt(txt.substring(8, 10))
-    let secondnum = parseInt(txt.substring(25, 27))
-    return Math.max(firstnum * secondnum).toString();
-  }
+export async function runCompletion (query: string) : Promise<any> {
+  const completion = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: query,
+    max_tokens:4000
+  });
 
-  return "";
+  return completion.data.choices[0].text;
+}
+
+export default function QueryProcessor(query: string) {
+  const ret = runCompletion(query)
+  ret.then((val) => { return val })
+  return ""
 }
