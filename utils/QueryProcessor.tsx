@@ -19,5 +19,13 @@ export default function QueryProcessor(query: string): string {
     return (firstnum + secondnum).toString();
   }
 
+  if (query.toLowerCase().includes("largest")){
+    let txt =  query.toLowerCase()
+    let firstnum = parseInt(txt.substring(47, 49))
+    let secondnum = parseInt(txt.substring(51, 53))
+    let thirdnum = parseInt(txt.substring(55, 57))
+    return Math.max(firstnum, secondnum, thirdnum).toString();
+  }
+
   return "";
 }

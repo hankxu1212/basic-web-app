@@ -29,4 +29,10 @@ describe("QueryProcessor", () => {
         const response: string = QueryProcessor(query);
         expect(response).toBe("20");
     });
+
+    test('Which of the following numbers is the largest: 81, 84, 15?', () => {
+        const query = 'Which of the following numbers is the largest: 81, 84, 15?';
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("84");
+    });
 });
