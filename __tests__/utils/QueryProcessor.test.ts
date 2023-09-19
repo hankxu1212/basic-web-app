@@ -23,4 +23,10 @@ describe("QueryProcessor", () => {
         const response: string = QueryProcessor(query);
         expect(response).toBe("ninghuax");
     });
+
+    test('what is 10 plus 10', () => {
+        const query = 'what is 10 plus 10';
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("20");
+    });
 });

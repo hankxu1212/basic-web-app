@@ -12,6 +12,12 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase() == "what is your name?"){
     return ("HX");
   }
+  if (query.toLowerCase().includes("plus")){
+    let txt =  query.toLowerCase()
+    let firstnum = parseInt(txt.substring(8, 10))
+    let secondnum = parseInt(txt.substring(16, 18))
+    return (firstnum + secondnum).toString();
+  }
 
   return "";
 }
