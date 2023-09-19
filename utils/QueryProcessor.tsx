@@ -10,7 +10,7 @@ export default function QueryProcessor(query: string): string {
     return ("ninghuax");
   }
   if (query.toLowerCase() == "what is your name?"){
-    return ("Hank");
+    return ("HX");
   }
 
   return "";
